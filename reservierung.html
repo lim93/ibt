@@ -27,7 +27,10 @@
             border-radius: 5px;
             margin: 20px;
             float: left;
+            background-color: #c4c4c4;
+            padding: 0px 10px 0px 10px;
         }
+
         .reservierung {
             min-width: 300px;
             height: 500px;
@@ -35,7 +38,21 @@
             border: 1px solid black;
             border-radius: 5px;
             margin: 20px;
-            padding: 15px;
+            padding: 0px 10px 0px 10px;
+        }
+        li {
+            float: left;
+            list-style: none;
+            margin: 5px;
+            border: 1px solid black;
+            border-radius: 5px;
+            margin: 5px;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .intro{
+            margin: 0px 20px 0px 20px;
         }
     </style>
 
@@ -46,22 +63,65 @@
 
 <div id="content">
 
+    <div class="header">
 
-    <div class="header"></div>
+        <ul>
+            <li> <a href="#">Reservierung</a>
+            </li>
+            <li><a href="#">Kontakt</a>
+            </li>
+            <li><a href="#">Impressum</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="intro">
+        <h1>Reservierung</h1>
 
 
-    <h1>Reservierung</h1>
+        <p>Hier entsteht eine Seite für die Tischreservierung in unserem Resturant.</p>
 
+    </div>
 
-    <p>Hier entsteht eine Seite für die Tischreservierung in unserem Resturant.</p>
-
-
-    <div class="saalplan"></div>
+    <div class="saalplan">
+        <p>Hier kommt der Saalplan hin</p>
+    </div>
 
     <div class="reservierung">
         <h3>Reservierung vornehmen</h3>
 
+        <form>
+            <p>Vorname: <span><input  type="text" placeholder="Vorname"></input></span>
+            </p>
+            <p>Name: <span><input  type="text" placeholder="Name"></input></span>
+            </p>
+            <p>Email: <span><input  type="text" placeholder="name@example.de"></input></span>
+            </p>
+            <p>Telefon: <span><input  type="text" placeholder="01234 567890"></input></span>
+            </p>
+
+
+            <hr>
+
+            <p>Datum: <span><input  type="text" placeholder=""></input></span>
+            </p>
+            <p>Uhrzeit: <span><input  type="text" placeholder=""></input></span>
+            </p>
+            <p>Tischnummer: <span><input  type="text" placeholder=""></input></span>
+            </p>
+            <p>Anzahl Personen: <span><input  type="text" placeholder=""></input></span>
+            </p>
+
+
+            <button type="submit">Reservieren</button>
+
+
+        </form>
+
+
     </div>
+
 
 
 
