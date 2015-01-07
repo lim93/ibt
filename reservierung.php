@@ -114,7 +114,6 @@
 		<div class="intro">
 			<h1>Reservierung</h1>
 			<p>Hier entsteht eine Seite für die Tischreservierung in unserem Resturant.</p>
-			<?php echo 'PHP WORX'; ?>
 		</div>
 
 		<form name="booking_form">
