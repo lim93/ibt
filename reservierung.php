@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 
-<?php
-$db = mysqli_connect("localhost", "root", "", "bookings");
-if(!$db)
-{
-  exit("Verbindungsfehler: ".mysqli_connect_error());
-}
-?>
-
 <html lang="de">
+
+<?php
+	require_once('php/db_config.php');
+
+	echo "\n".MYSQL_HOST;
+	echo "\n".MYSQL_USER;
+	echo "\n".MYSQL_PW;
+	echo "\n".MYSQL_DB;
+	echo "\n".MYSQL_PORT;
+	
+	$db_link = mysqli_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT);
+
+	if($db_link)
+	{
+		echo 'Verbindung aufgebaut!';
+		print_r($db_link);
+	} 
+	else 
+	{
+		exit("Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error());
+	}
+	
+	mysqli_set_charset($db_link, 'utf8');
+?>
 
 <head>
     <meta charset="utf-8">
@@ -66,7 +82,6 @@ if(!$db)
         .floatRight {
             float: right;
         }
-		
 		img[usemap] {
 			border: none;
 			height: auto;
@@ -99,6 +114,7 @@ if(!$db)
 		<div class="intro">
 			<h1>Reservierung</h1>
 			<p>Hier entsteht eine Seite für die Tischreservierung in unserem Resturant.</p>
+			<?php echo 'PHP WORX'; ?>
 		</div>
 
 		<form name="booking_form">
