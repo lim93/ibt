@@ -7,9 +7,10 @@
 	
 	var date = document.booking_form.date.value;
 	var time = document.booking_form.time.value;
+	var email = document.booking_form.email.value;
 	
 	// alert('eingegebenes Datum = ' + date);
-	alert('eingegebene Zeit: ' + time);
+	// alert('eingegebene Zeit: ' + time);
 	
 	// Datumsvalidierung
 	
@@ -61,6 +62,19 @@
 	}
 	
 	// alert('isValid nach Zeit: ' + isValid);
+	
+	// E-Mailvalidierung
+	
+	var mailRegex = new RegExp("^.+@.+\\.[^.]{2,}$");
+	
+	if (!mailRegex.test(email)) {
+		
+		errorMessage = "Die angegebene Email-Adresse entspricht nicht dem gültigen Format. "
+					    + "Beispiel für eine gültige Eingabe: ihr.name@provider.de";
+		alert(errorMessage);
+		
+		isValid = false;
+	}
 	
 	return isValid;
 
