@@ -32,7 +32,10 @@
 
     <!-- Bootstrap CSS-->
     <link href="css/bootstrap.css" rel="stylesheet">
-
+	
+    <!-- Validierung / Plausibilitätsprüfung -->
+	<script type="text/javascript" src="js/validate_form.js"></script>
+	
     <!-- Image Map -->
     <script src="js/jquery.rwdImageMaps.min.js"></script>
     <script>
@@ -140,7 +143,7 @@
             <p>Hier entsteht eine Seite für die Tischreservierung in unserem Resturant.</p>
         </div>
 
-        <form name="booking_form" action="confirm.php" method="post">
+        <form name="booking_form" action="confirm.php" method="post" onsubmit="return validateForm();">
 
             <div class="panel panel-default saalplan">
 

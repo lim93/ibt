@@ -8,10 +8,10 @@
 	$db_link = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); 
 
 	if(mysqli_connect_errno()) { 
-		throw new Exception("Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error());
+		exit("Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error());
 	} 
 	if(!$db_link->set_charset("utf8")){
-		throw new Exception("Charset-Proble: " . $db_link->error);
+		exit("Charset-Problem: " . $db_link->error);
 	} 
 	
     $booking_no = 42;
