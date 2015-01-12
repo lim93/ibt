@@ -2,18 +2,7 @@
 
 <html lang="de">
 
-<?php 
-    require_once( 'php/db_config.php'); 
-
-	$db_link = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); 
-
-	if(mysqli_connect_errno()) { 
-		exit("Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error());
-	} 
-	if(!$db_link->set_charset("utf8")){
-		exit("Charset-Proble: " . $db_link->error);
-	} 
-?> 
+<?php require_once( 'php/db_config.php'); $db_link=new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); if(mysqli_connect_errno()) { exit( "Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error()); } if(!$db_link->set_charset("utf8")){ exit("Charset-Proble: " . $db_link->error); } ?>
 
 <head>
     <meta charset="utf-8">
@@ -32,10 +21,10 @@
 
     <!-- Bootstrap CSS-->
     <link href="css/bootstrap.css" rel="stylesheet">
-	
+
     <!-- Validierung / Plausibilitätsprüfung -->
-	<script type="text/javascript" src="js/validate_form.js"></script>
-	
+    <script type="text/javascript" src="js/validate_form.js"></script>
+
     <!-- Image Map -->
     <script src="js/jquery.rwdImageMaps.min.js"></script>
     <script>
@@ -85,7 +74,7 @@
             display: inline-block;
             margin: 20px 20px 20px 0px;
             float: left;
-            padding: 0px 10px 0px 10px;
+            padding: 10px;
         }
         .reservierung {
             min-width: 30%;
@@ -123,9 +112,9 @@
 
         <div class="navigation">
             <ul class="nav nav-tabs" style="background-color:white;">
-                <li role="presentation"><a href="#">Start</a>
+                <li role="presentation"><a href="index.html">Start</a>
                 </li>
-                <li role="presentation" class="active"><a href="#">Reservierung</a>
+                <li role="presentation" class="active"><a href="reservierung.php">Reservierung</a>
                 </li>
                 <li role="presentation"><a href="#">Kontakt</a>
                 </li>
@@ -207,27 +196,29 @@
 
                 <div class="panel-body">
 
-                    <p>Datum: <span><input  class="form-control reducedPadding" type="text" name="date" placeholder=""></input></span>
+                    <p>Datum: <span><input  class="form-control reducedPadding" type="text" name="date"  id="date" placeholder=""></input></span>
                     </p>
-                    <p>Uhrzeit: <span><input  class="form-control reducedPadding" type="text" name="time" placeholder=""></input></span>
+                    <p>Uhrzeit: <span><input  class="form-control reducedPadding" type="text" name="time" id="time" placeholder=""></input></span>
                     </p>
-                    <p>Tischnummer: <span><input  class="form-control reducedPadding" type="text" name="table_no" placeholder=""></input></span>
+                    <p>Tischnummer: <span><input  class="form-control reducedPadding" type="text" name="table_no" id="table_no" placeholder=""></input></span>
                     </p>
-                    <p>Anzahl Personen: <span><input  class="form-control reducedPadding" type="text" name="persons" placeholder=""></input></span>
+                    <p>Anzahl Personen: <span><input  class="form-control reducedPadding" type="text" name="persons" id="persons" placeholder=""></input></span>
+                    </p>
+
+                    <hr>
+
+                    <p>Vorname: <span><input class="form-control reducedPadding" type="text" name="first_name" id="first_name" placeholder="Vorname"></input></span>
+                    </p>
+                    <p>Name: <span><input  class="form-control reducedPadding" type="text" name="last_name" id="last_name" placeholder="Name"></input></span>
+                    </p>
+                    <p>Email: <span><input  class="form-control reducedPadding" type="text" name="email" id="email" placeholder="name@example.de"></input></span>
+                    </p>
+                    <p>Telefon: <span><input  class="form-control reducedPadding" type="text" name="phone" id="phone" placeholder="01234 567890"></input></span>
                     </p>
 
                     <hr>
 
-                    <p>Vorname: <span><input class="form-control reducedPadding" type="text" name="first_name" placeholder="Vorname"></input></span>
-                    </p>
-                    <p>Name: <span><input  class="form-control reducedPadding" type="text" name="last_name" placeholder="Name"></input></span>
-                    </p>
-                    <p>Email: <span><input  class="form-control reducedPadding" type="text" name="email" placeholder="name@example.de"></input></span>
-                    </p>
-                    <p>Telefon: <span><input  class="form-control reducedPadding" type="text" name="phone" placeholder="01234 567890"></input></span>
-                    </p>
-
-                    <hr>
+                    <div id="errorDiv"></div>
 
                     <button class="btn btn-primary reducedPadding floatRight" type="submit">Reservieren</button>
 
@@ -238,33 +229,6 @@
         </form>
 
     </div>
-
-<?php
-    // $booking_no = 42;
-	
-	// if ( isset($_POST['date']) and isset($_POST['time']) and isset($_POST['table_no']) and isset($_POST['persons'])
-        // and isset($_POST['first_name']) and isset($_POST['last_name']) and isset($_POST['email']) and isset($_POST['phone'])
-        // and $_POST['date'] != "" and $_POST['time'] != "" and $_POST['table_no'] != "" and $_POST['persons'] != ""
-        // and $_POST['first_name'] !=  "" and $_POST['last_name'] != "" and $_POST['email'] != "" and $_POST['phone'] != "" ) 
-	// {
-	    // $date = mysqli_real_escape_string($db_link, $_POST['date']);
-	    // $time = mysqli_real_escape_string($db_link, $_POST['time']);
-	    // $table_no = mysqli_real_escape_string($db_link, $_POST['table_no']);
-	    // $persons = mysqli_real_escape_string($db_link, $_POST['persons']);
-	    // $first_name = mysqli_real_escape_string($db_link, $_POST['first_name']);
-	    // $last_name = mysqli_real_escape_string($db_link, $_POST['last_name']);
-	    // $email = mysqli_real_escape_string($db_link, $_POST['email']);
-	    // $phone = mysqli_real_escape_string($db_link, $_POST['phone']);
-    
-	
-        // $sql="INSERT INTO bookings(booking_no, date, time, table_no, persons, first_name, last_name, email, phone) 
-	          // VALUES ('$booking_no', '$date', '$time', '$table_no', '$persons', '$first_name', '$last_name', '$email', '$phone')";
-    
-        // if (!mysqli_query($db_link, $sql)) {
-	        // exit('Fehler beim Insert' . mysqli_error($db_link));
-	    // }
-    // }
-?>
 
 </body>
 
