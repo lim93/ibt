@@ -2,7 +2,7 @@
 
 <html lang="de">
 
-<?php require_once( 'php/db_config.php'); $db_link=new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); if(mysqli_connect_errno()) { exit( "Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error()); } if(!$db_link->set_charset("utf8")){ exit("Charset-Proble: " . $db_link->error); } ?>
+<?php require_once( 'php/db_config.php'); $db_link=new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); if(mysqli_connect_errno()) { exit( "Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error()); } if(!$db_link->set_charset("utf8")){ exit("Charset-Problem: " . $db_link->error); } ?>
 
 <head>
     <meta charset="utf-8">
@@ -196,22 +196,22 @@
 
                 <div class="panel-body">
 
-                    <p>Datum: <span><input  class="form-control reducedPadding" type="text" name="date"  id="date" placeholder=""></input></span>
+                    <p>Datum: *<span><input  class="form-control reducedPadding" type="text" name="date"  id="date" placeholder="tt.mm.jjjj"></input></span>
                     </p>
-                    <p>Uhrzeit: <span><input  class="form-control reducedPadding" type="text" name="time" id="time" placeholder=""></input></span>
+                    <p>Uhrzeit: *<span><input  class="form-control reducedPadding" type="text" name="time" id="time" placeholder="hh:mm"></input></span>
                     </p>
-                    <p>Tischnummer: <span><input  class="form-control reducedPadding" type="text" name="table_no" id="table_no" placeholder=""></input></span>
+                    <p>Tischnummer: *<span><input  class="form-control reducedPadding" type="text" name="table_no" id="table_no" placeholder=""></input></span>
                     </p>
                     <p>Anzahl Personen: <span><input  class="form-control reducedPadding" type="text" name="persons" id="persons" placeholder=""></input></span>
                     </p>
 
                     <hr>
 
-                    <p>Vorname: <span><input class="form-control reducedPadding" type="text" name="first_name" id="first_name" placeholder="Vorname"></input></span>
+                    <p>Vorname: *<span><input class="form-control reducedPadding" type="text" name="first_name" id="first_name" placeholder="Vorname"></input></span>
                     </p>
-                    <p>Name: <span><input  class="form-control reducedPadding" type="text" name="last_name" id="last_name" placeholder="Name"></input></span>
+                    <p>Name: *<span><input  class="form-control reducedPadding" type="text" name="last_name" id="last_name" placeholder="Name"></input></span>
                     </p>
-                    <p>Email: <span><input  class="form-control reducedPadding" type="text" name="email" id="email" placeholder="name@example.de"></input></span>
+                    <p>Email: *<span><input  class="form-control reducedPadding" type="text" name="email" id="email" placeholder="name@example.de"></input></span>
                     </p>
                     <p>Telefon: <span><input  class="form-control reducedPadding" type="text" name="phone" id="phone" placeholder="01234 567890"></input></span>
                     </p>

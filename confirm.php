@@ -29,10 +29,12 @@
 	    $last_name = mysqli_real_escape_string($db_link, $_POST['last_name']);
 	    $email = mysqli_real_escape_string($db_link, $_POST['email']);
 	    $phone = mysqli_real_escape_string($db_link, $_POST['phone']);
-    
-	
+		
+		$date_parts = explode('.', $date);
+		$mysql_date = sprintf("%04d-%02d-%02d", $date_parts[2], $date_parts[1], $date_parts[0]);
+
         $sql="INSERT INTO bookings(booking_no, date, time, table_no, persons, first_name, last_name, email, phone) 
-	          VALUES ('$booking_no', '$date', '$time', '$table_no', '$persons', '$first_name', '$last_name', '$email', '$phone')";
+	          VALUES ('$booking_no', '$mysql_date', '$time', '$table_no', '$persons', '$first_name', '$last_name', '$email', '$phone')";
     
         if (!$db_link->query($sql)) {
 	        exit('Fehler beim Insert' . mysqli_error($db_link));
