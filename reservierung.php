@@ -129,7 +129,7 @@
 
         <div class="intro">
             <h1>Reservierung</h1>
-            <p>Hier entsteht eine Seite f&uml;r die Tischreservierung in unserem Resturant.</p>
+            <p>Hier entsteht eine Seite f&uuml;r die Tischreservierung in unserem Resturant.</p>
         </div>
 
         <form name="booking_form" action="confirm.php" method="post" onsubmit="return validateForm();">
