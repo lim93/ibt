@@ -31,7 +31,7 @@ function validateForm() {
 
 			// alert('Date entspricht nicht RegEx');
 
-			errorMessage = "Das angegebene Datum entspricht nicht dem gültigen Format. <br>" + "Beispiel für eine gültige Eingabe: 01.01.2015<br />";
+			errorMessage = "Das angegebene Datum entspricht nicht dem g&uuml;ltigen Format. <br />" + "Beispiel f&uuml;r eine g&uuml;ltige Eingabe: 01.01.2015<br />";
 			isValid = false;
 		} else {
 
@@ -43,7 +43,7 @@ function validateForm() {
 			var testDate = new Date(y, m - 1, d);
 
 			if ((testDate.getFullYear() != y) || (testDate.getMonth() + 1 != m) || (testDate.getDate() != d)) {
-				errorMessage = "Das angegebene Datum ist ungültig.<br />";
+				errorMessage = "Das angegebene Datum ist ung&uuml;ltig.<br />";
 				isValid = false;
 			} else {
 			
@@ -51,7 +51,7 @@ function validateForm() {
 				var today = new Date();
 				
 				if (testDate < today) {
-					errorMessage = "Das angegebene Datum liegt in der Vergangenheit. Bitte geben Sie ein zukünftiges Datum an.<br />";
+					errorMessage = "Das angegebene Datum liegt in der Vergangenheit. Bitte geben Sie ein zuk&uuml;nftiges Datum an.<br />";
 					isValid = false;
 				}
 			}
@@ -73,7 +73,7 @@ function validateForm() {
 
 		if (!timeRegex.test(time)) {
 
-			errorMessage += "\nDie angegebene Uhrzeit entspricht nicht dem gültigen Format. <br />" + "Beispiel für eine gültige Eingabe: 19:30<br />";
+			errorMessage += "\nDie angegebene Uhrzeit entspricht nicht dem g&uuml;ltigen Format. <br />" + "Beispiel f&uuml;r eine g&uuml;ltige Eingabe: 19:30<br />";
 			isValid = false;
 		}
 	}
@@ -84,7 +84,7 @@ function validateForm() {
 	
 	// Tischnummer darf nicht leer sein.
 	if (tableNo === "") {
-		errorMessage += "Bitte wählen Sie einen Tisch aus.<br />";
+		errorMessage += "Bitte w&auml;hlen Sie einen Tisch aus.<br />";
 		isValid = false;		
 	} else {
 	
@@ -127,7 +127,7 @@ function validateForm() {
 		
 		if (!mailRegex.test(email)) {
 
-			errorMessage += "Die angegebene Email-Adresse entspricht nicht dem gültigen Format. <br />" + "Beispiel für eine gültige Eingabe: ihr.name@provider.de<br />";
+			errorMessage += "Die angegebene Email-Adresse entspricht nicht dem g&uuml;ltigen Format. <br />" + "Beispiel f&uuml;r eine g&uuml;ltige Eingabe: ihr.name@provider.de<br />";
 
 			isValid = false;
 		}

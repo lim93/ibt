@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="de">
 
@@ -16,10 +16,10 @@
 	
     $booking_no = 42;
 	
-	if ( isset($_POST['date']) and isset($_POST['time']) and isset($_POST['table_no']) and isset($_POST['persons'])
-        and isset($_POST['first_name']) and isset($_POST['last_name']) and isset($_POST['email']) and isset($_POST['phone'])
-        and $_POST['date'] != "" and $_POST['time'] != "" and $_POST['table_no'] != "" and $_POST['persons'] != ""
-        and $_POST['first_name'] !=  "" and $_POST['last_name'] != "" and $_POST['email'] != "" and $_POST['phone'] != "" ) 
+	if ( isset($_POST['date']) and isset($_POST['time']) and isset($_POST['table_no']) 
+        and isset($_POST['first_name']) and isset($_POST['last_name']) and isset($_POST['email']) 
+        and $_POST['date'] != "" and $_POST['time'] != "" and $_POST['table_no'] != ""  
+        and $_POST['first_name'] !=  "" and $_POST['last_name'] != "" and $_POST['email'] != "") 
 	{
 	    $date = mysqli_real_escape_string($db_link, $_POST['date']);
 	    $time = mysqli_real_escape_string($db_link, $_POST['time']);
@@ -45,7 +45,7 @@
 ?>
 
 <head>
-	<title>Bestätigung</title>
+	<title>Best&auml;tigung</title>
 </head>
 
 <body>
@@ -53,10 +53,10 @@
     <p>Ihre Reservierung wurde erfasst. Vielen Dank.</p>
 
 <?php
-    echo "Reservierungsdatum: " . $date . ", " . $time . "\n";
+    echo "Reservierungsdatum: " . $date . ", " . $time . "<br />";
 	echo "Tisch-Nr: " . $table_no;
 ?> 
 
-    <p><a href="http://localhost/ibt/reservierung.php" />Zurück zum Reservierungsformular</p>
+    <p><a href="reservierung.php" />Zur&uuml;ck zum Reservierungsformular</p>
 
 </body>
