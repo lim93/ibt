@@ -2,7 +2,7 @@
 
 <html lang="de">
 
-<?php require_once( 'php/db_config.php'); $db_link=new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); if(mysqli_connect_errno()) { exit( "Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error()); } if(!$db_link->set_charset("utf8")){ exit("Charset-Problem: " . $db_link->error); } ?>
+<?php require_once "php/recaptcha_config.php" ?>
 
 <head>
     <meta charset="utf-8">
@@ -24,6 +24,9 @@
 
     <!-- Validierung / Plausibilitätsprüfung -->
     <script type="text/javascript" src="js/validate_form.js"></script>
+	
+	<!-- reCAPTCHA API -->
+	<script src="https://www.google.com/recaptcha/api.js?hl=<?php echo LANG;?>"></script> <!-- async defer -->
 
     <!-- Image Map -->
     <script src="js/jquery.rwdImageMaps.min.js"></script>
@@ -217,6 +220,8 @@
                     </p>
 
                     <hr>
+					
+					<!-- <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div><br/> -->
 
                     <div id="errorDiv"></div>
 

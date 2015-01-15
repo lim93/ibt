@@ -3,45 +3,58 @@
 <html lang="de">
 
 <?php
-    require_once( 'php/db_config.php'); 
-
-	$db_link = new mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PW, MYSQL_DB, MYSQL_PORT); 
-
-	if(mysqli_connect_errno()) { 
-		exit("Verbindungsaufbau fehlgeschlagen: " . mysqli_connect_error());
-	} 
-	if(!$db_link->set_charset("utf8")){
-		exit("Charset-Problem: " . $db_link->error);
-	} 
+	include "php/functions.php";
 	
-    $booking_no = 42;
+	// Überprüfung der Captcha-Eingabe; liefert im Moment immer true zurück.
+    //if (verifyCaptcha()) {
 	
-	if ( isset($_POST['date']) and isset($_POST['time']) and isset($_POST['table_no']) 
-        and isset($_POST['first_name']) and isset($_POST['last_name']) and isset($_POST['email']) 
-        and $_POST['date'] != "" and $_POST['time'] != "" and $_POST['table_no'] != ""  
-        and $_POST['first_name'] !=  "" and $_POST['last_name'] != "" and $_POST['email'] != "") 
-	{
-	    $date = mysqli_real_escape_string($db_link, $_POST['date']);
-	    $time = mysqli_real_escape_string($db_link, $_POST['time']);
-	    $table_no = mysqli_real_escape_string($db_link, $_POST['table_no']);
-	    $persons = mysqli_real_escape_string($db_link, $_POST['persons']);
-	    $first_name = mysqli_real_escape_string($db_link, $_POST['first_name']);
-	    $last_name = mysqli_real_escape_string($db_link, $_POST['last_name']);
-	    $email = mysqli_real_escape_string($db_link, $_POST['email']);
-	    $phone = mysqli_real_escape_string($db_link, $_POST['phone']);
+		if (checkPostParams()) {
 		
-		$date_parts = explode('.', $date);
-		$mysql_date = sprintf("%04d-%02d-%02d", $date_parts[2], $date_parts[1], $date_parts[0]);
-
-        $sql="INSERT INTO bookings(booking_no, date, time, table_no, persons, first_name, last_name, email, phone) 
-	          VALUES ('$booking_no', '$mysql_date', '$time', '$table_no', '$persons', '$first_name', '$last_name', '$email', '$phone')";
-    
-        if (!$db_link->query($sql)) {
-	        exit('Fehler beim Insert' . mysqli_error($db_link));
-	    }
-    } else {
-        echo "Eingabefehler";
-	}
+			$dbLink = getDbLink();
+		
+			$date = mysqli_real_escape_string($dbLink, $_POST['date']);
+			$time = mysqli_real_escape_string($dbLink, $_POST['time']);
+			$tableNo = mysqli_real_escape_string($dbLink, $_POST['table_no']);
+			$persons = mysqli_real_escape_string($dbLink, $_POST['persons']);
+			$firstName = mysqli_real_escape_string($dbLink, $_POST['first_name']);
+			$lastName = mysqli_real_escape_string($dbLink, $_POST['last_name']);
+			$email = mysqli_real_escape_string($dbLink, $_POST['email']);
+			$phone = mysqli_real_escape_string($dbLink, $_POST['phone']);
+			
+			$dateParts = explode('.', $date);
+			$mysqlDate = sprintf("%04d%02d%02d", $dateParts[2], $dateParts[1], $dateParts[0]);
+			
+			$bookingNo = 42;
+			
+			if (isAvailable($dbLink, $mysqlDate, $tableNo)) {
+			
+				$sql="INSERT INTO bookings(booking_no, date, time, table_no, persons, first_name, last_name, email, phone) 
+					  VALUES ('$bookingNo', '$mysqlDate', '$time', '$tableNo', '$persons', '$firstName', '$lastName', '$email', '$phone')";
+			
+				if (!$dbLink->query($sql)) {
+					exit('Fehler beim Insert' . mysqli_error($dbLink));
+					mysqli_close($dbLink);
+				} else {
+					// Hier könnte man noch eine Mail versenden. Der Code dafür ist recht simpel, 
+					// allerdings braut man dafür natürlich einen Mailserver.
+					
+					// $empfaenger = $email;
+					// $betreff = "Ihre Reservierung";
+					// $text = "Ihre Reservierung wurde entgegengenommen.";
+					// mail($empfaenger, $betreff, $text);
+					
+					mysqli_close($dbLink);
+				}
+			} else {
+			
+				// Dem Benutzer irgendwie Bescheid sagen, dass seine Reservierung nicht möglich war.
+				echo "Keine Reservierung möglich: Tisch $tableNo am $date schon reserviert.";
+				
+			}
+		} else {
+			echo "Eingabefehler";
+		}
+	// }
 ?>
 
 <head>
@@ -54,7 +67,7 @@
 
 <?php
     echo "Reservierungsdatum: " . $date . ", " . $time . "<br />";
-	echo "Tisch-Nr: " . $table_no;
+	echo "Tisch-Nr: " . $tableNo;
 ?> 
 
     <p><a href="reservierung.php" />Zur&uuml;ck zum Reservierungsformular</p>
