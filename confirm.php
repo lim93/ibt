@@ -2,8 +2,62 @@
 
 <html lang="de">
 
+<head>
+	
+	<title>Best&auml;tigung</title>
+	
+	<!-- Imports ---------------------->
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.1.js"></script>
+
+    <!-- Sticky Header -->
+    <script src="js/sticky.js"></script>
+
+    <!-- Bootstrap CSS-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+
+    <!-- Styles ---------------------->
+    <style type="text/css">
+        a {
+            / word-wrap: break-word;
+        }
+        .header {
+            padding-top: 15px;
+            height: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+        }
+        .navigation {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            border-top: 0;
+        }
+        .content {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+	
+</head>
+
 <?php
 	include "php/functions.php";
+	
+	// Boolsche Variable, um dynamische Ausgabe zu realieren.
+	$booked = false;
 	
 	// Überprüfung der Captcha-Eingabe; liefert im Moment immer true zurück.
     //if (verifyCaptcha()) {
@@ -35,8 +89,12 @@
 					exit('Fehler beim Insert' . mysqli_error($dbLink));
 					mysqli_close($dbLink);
 				} else {
+				
+					// Datensatz wurde in DB eingefügt.
+					$booked = true;
+					
 					// Hier könnte man noch eine Mail versenden. Der Code dafür ist recht simpel, 
-					// allerdings braut man dafür natürlich einen Mailserver.
+					// allerdings braucht man dafür natürlich einen Mailserver.
 					
 					// $empfaenger = $email;
 					// $betreff = "Ihre Reservierung";
@@ -45,31 +103,61 @@
 					
 					mysqli_close($dbLink);
 				}
-			} else {
-			
-				// Dem Benutzer irgendwie Bescheid sagen, dass seine Reservierung nicht möglich war.
-				echo "Keine Reservierung möglich: Tisch $tableNo am $date schon reserviert.";
-				
 			}
 		} else {
 			echo "Eingabefehler";
 		}
 	// }
-?>
-
-<head>
-	<title>Best&auml;tigung</title>
-</head>
+?> 
 
 <body>
 
-    <p>Ihre Reservierung wurde erfasst. Vielen Dank.</p>
+    <div>
+        <img src="images/restaurant2.jpg" width="100%">
+    </div>
 
-<?php
-    echo "Reservierungsdatum: " . $date . ", " . $time . "<br />";
-	echo "Tisch-Nr: " . $tableNo;
-?> 
+    <div id="pageHeader" class="header">
 
-    <p><a href="reservierung.php" />Zur&uuml;ck zum Reservierungsformular</p>
+        <div class="navigation">
+            <ul class="nav nav-tabs" style="background-color:white;">
+                <li role="presentation"><a href="index.html">Start</a>
+                </li>
+                <li role="presentation" class="active"><a href="reservierung.php">Reservierung</a>
+                </li>
+                <li role="presentation"><a href="#">Kontakt</a>
+                </li>
+                <li role="presentation"><a href="#">Impressum</a>
+                </li>
+            </ul>
+        </div>
 
+    </div>
+
+    <div class="content" id="content">
+
+        <div class="intro">
+			
+			<?php
+	
+				if ($booked) {
+					// Datensatz wurde in die DB geschrieben -> Erfolgsmeldung an Benutzer
+					echo "<h3>Ihre Reservierung wurde erfasst. Vielen Dank.</h3>";
+					echo "<p>Reservierungsnummer: $bookingNo<br />"
+					     . "Reservierungsdatum: $date, $time<br />"
+					     . "Tisch-Nr: $tableNo</p>";
+				} else {
+					// Reservierung war nicht möglich -> entsprechende Meldung an Benutzer
+					echo "<h3>Der von Ihnen gew&auml;hlte Tisch Nr. $tableNo ist am $date leider nicht mehr verf&uuml;gbar.</h3>";
+				}
+	
+			?>
+			
+			<p><a href="reservierung.php" />Zur&uuml;ck zum Reservierungsformular</p>
+            
+        </div>
+
+    </div>
+	
 </body>
+
+</html>
