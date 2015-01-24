@@ -11,7 +11,7 @@
 
     <!-- Imports ---------------------->
     <!-- Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
 
     <!-- jQuery -->
     <script src="js/jquery-1.11.1.js"></script>
@@ -24,9 +24,10 @@
 
     <!-- Validierung / Plausibilitätsprüfung -->
     <script type="text/javascript" src="js/validate_form.js"></script>
-	
-	<!-- reCAPTCHA API -->
-	<script src="https://www.google.com/recaptcha/api.js?hl=<?php echo LANG;?>"></script> <!-- async defer -->
+
+    <!-- reCAPTCHA API -->
+    <script src="https://www.google.com/recaptcha/api.js?hl=<?php echo LANG;?>"></script>
+    <!-- async defer -->
 
     <!-- Image Map -->
     <script src="js/jquery.rwdImageMaps.min.js"></script>
@@ -35,8 +36,12 @@
             $('img[usemap]').rwdImageMaps();
 
             $('area').on('click', function () {
-                confirm('Sie haben ' + $(this).attr('title') + ' ausgewählt.');
+
+                $("#infoDiv").html(
+                    '<div class="alert alert-info" role="alert">Sie haben ' + $(this).attr("title") + ' ausgewählt.</div>');
             });
+
+
         });
     </script>
 
@@ -203,7 +208,8 @@
                     </p>
                     <p>Uhrzeit: *<span><input  class="form-control reducedPadding" type="text" name="time" id="time" placeholder="hh:mm"></input></span>
                     </p>
-                    <p>Tischnummer: *<span><input  class="form-control reducedPadding" type="text" name="table_no" id="table_no" placeholder=""></input></span>
+                    <p>Tischnummer: *<span><input  class="form-control reducedPadding" type="text" name="table_no" id="table_no" placeholder=""></input></span> 
+                        <div id="infoDiv"></div>
                     </p>
                     <p>Anzahl Personen: <span><input  class="form-control reducedPadding" type="text" name="persons" id="persons" placeholder=""></input></span>
                     </p>
@@ -220,8 +226,8 @@
                     </p>
 
                     <hr>
-					
-					<!-- <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div><br/> -->
+
+                    <!-- <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div><br/> -->
 
                     <div id="errorDiv"></div>
 
