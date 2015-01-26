@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <head>
     <meta charset="utf-8">
@@ -63,13 +63,13 @@
 
         <div class="navigation">
             <ul class="nav nav-tabs" style="background-color:white;">
-                <li role="presentation" class="active"><a href="index.html">Start</a>
+                <li role="presentation"><a href="index.html">Start</a>
                 </li>
                 <li role="presentation"><a href="reservierung.php">Reservierung</a>
                 </li>
                 <li role="presentation"><a href="#">Kontakt</a>
                 </li>
-                <li role="presentation"><a href="impressum.php">Impressum</a>
+                <li role="presentation" class="active"><a href="#">Impressum</a>
                 </li>
             </ul>
         </div>
@@ -79,12 +79,7 @@
     <div class="content" id="content">
 
         <div class="intro">
-            <h1>Ristorante l'Imaginario</h1>
-            <p>Benvenuto auf der Internetseite des Ristorante l'Imaginario.</p>
-
-            <h3>Öffnungszeiten:</h3>
-            <p>Täglich: 17:00 - 23:00</p>
-            <p>Kein Ruhetag</p>
+            <h1>Impressum vom Ristorante</h1>
         </div>
 
 
