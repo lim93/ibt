@@ -4,7 +4,7 @@
 
 <head>
 	
-	<title>Best&auml;tigung</title>
+	<title>Reservierung</title>
 	
 	<!-- Imports ---------------------->
     <!-- Bootstrap JS -->
@@ -88,8 +88,8 @@
 					  VALUES ('$bookingNo', '$mysqlDate', '$time', '$tableNo', '$persons', '$firstName', '$lastName', '$email', '$phone')";
 			
 				if (!$dbLink->query($sql)) {
-					exit('Fehler beim Insert' . mysqli_error($dbLink));
-					mysqli_close($dbLink);
+					exit('Fehler beim Insert' . $dbLink->error);
+					$dbLink->close();
 				} else {
 				
 					// Datensatz wurde in DB eingefügt.
@@ -103,7 +103,7 @@
 					// $text = "Ihre Reservierung wurde entgegengenommen.";
 					// mail($empfaenger, $betreff, $text);
 					
-					mysqli_close($dbLink);
+					$dbLink->close();
 				}
 			} else {
 				$booked = "not_available";

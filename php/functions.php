@@ -16,9 +16,9 @@ function getDbLink() {
 
 function checkPostParams() {
 	return (isset($_POST['date']) and isset($_POST['time']) and isset($_POST['table_no']) 
-        and isset($_POST['first_name']) and isset($_POST['last_name']) and isset($_POST['email']) 
+        and isset($_POST['last_name']) and isset($_POST['email']) 
         and $_POST['date'] != "" and $_POST['time'] != "" and $_POST['table_no'] != ""  
-        and $_POST['first_name'] !=  "" and $_POST['last_name'] != "" and $_POST['email'] != "");
+        and $_POST['last_name'] != "" and $_POST['email'] != "");
 }
 
 function verifyCaptcha() {
@@ -35,6 +35,7 @@ function verifyCaptcha() {
 		$_POST["g-recaptcha-response"]
 	);
 
+	return true;
 	return $resp->success;
 }
 
