@@ -49,59 +49,55 @@
             margin-left: auto;
             margin-right: auto;
         }
-		
-		.captchaError {
-			color: red;
-			font-weight: bold;
-		}
-
-		.submitSuccess {
-			color: green;
-			font-weight: bold;
-		}
-
-		#recaptcha_response_field {
-			height: auto !important;
-		}
-
-		h3 {
-			font-size: 18px;
-			line-height: 18px;
-			margin-bottom: 15px;
-		}
-
-		#formPreview input,#formPreview select {
-			display: block;
-			width: 128px;
-			height: 24px;
-			float: left;
-		}
-
-		#formPreview label {
-			display: block;
-			float: left;
-			font-size: 15px;
-			width: 90px;
-			line-height: 24px;
-		}
-
-		#formPreview .formdiv {
-			margin: 11px 0;
-		}
-
-		#formPreview textarea {
-			width: 458px;
-			height: 115px;
-		}
-
-		#formPreview form {
-			
-			padding-bottom: 60px;
-			width: 380px;
-		}
-
-
-
+        .kontaktformular {
+            max-width: 60%;
+            min-width: 350px;
+            height: auto;
+            display: inline-block;
+            margin: 20px 20px 20px 0px;
+            float: left;
+        }
+        .anschrift {
+            min-width: 30%;
+            max-width: 400px;
+            display: inline-block;
+            margin: 20px;
+        }
+        .captchaError {
+            color: red;
+            font-weight: bold;
+        }
+        .submitSuccess {
+            color: green;
+            font-weight: bold;
+        }
+        #recaptcha_response_field {
+            height: auto !important;
+        }
+        #formPreview input,
+        #formPreview select {
+            display: block;
+            width: 128px;
+            height: 30px;
+            float: left;
+        }
+        #formPreview label {
+            display: block;
+            float: left;
+            font-size: 15px;
+            width: 90px;
+            line-height: 24px;
+        }
+        #formPreview .formdiv {
+            margin: 11px 0;
+        }
+        #formPreview textarea {
+            width: 100%;
+            height: 115px;
+        }
+        .intro {
+            margin: 0px 20px 0px 0px;
+        }
     </style>
 
 </head>
@@ -109,7 +105,7 @@
 <body>
 
     <div>
-        <img src="images/restaurant.jpg" width="100%">
+        <img src="images/restaurant2.jpg" width="100%">
     </div>
 
     <div id="pageHeader" class="header">
@@ -132,80 +128,116 @@
     <div class="content" id="content">
 
         <div class="intro">
-			<div class="welcome">
-				<p><h4>Ristorante l'Imaginario</h4> Bruchstr. 6<br> 45883 Gelsenkirchen</p>
-				Telefon: (0211) - 963411<br>
-				E-Mail: <a href='mailto:info@Imaginario.de'>info@Imaginario.de</a></br></p>
-				<h4>&Ouml;ffnungszeiten:</h4>
-				<p>T&auml;glich: 17:00 - 23:00</p>
-				<p>Kein Ruhetag</p>
-			</div>
-			
-            <div id="formPreview">
-				<form style="background:#FFFFFF;color:#666666;font-family:Arial" action="#" method="post" class="clear">
-					<h3>Kontaktformular </h3>
-					<div id="formName" class="clear">
-						<div id="formtAnrede" class="clear formdiv">
-							<div class="layout">
-								<label for="anrede">Anrede:</label>
-									<select name="anrede" id="anrede">
-										<option value="Herr">Herr</option>
-										<option value="Frau">Frau</option>
-										<option value="Dipl. Ing.">Dipl. Ing.</option>
-										<option value="Prof.">Prof.</option>
-										<option value="Prof. Dr.">Prof. Dr.</option>
-										<option value="Herr Dr.">Herr Dr.</option>
-										<option value="Frau Dr.">Frau Dr.</option>
-									</select>
-							</div><br></br>
-						</div>
-						<div class="clear formdiv">
-							<div class="layout">
-								<label for="vorname">Vorname:*</label>
-									<input style="" value="" type="text" name="vorname" id="vorname">
-							</div><br></br>
-							<div class="layout">
-								<label for="nachname">Nachname:*</label>
-									<input style="" value="" type="text" name="nachname" id="nachname">
-							</div><br></br>
-						</div>	 				
-					</div> <!-- end kontaktName -->	
-					
-						<div id="kontaktEmail" class="clear formdiv">
-							<div class="layout">
-								<label for="email">Email:*</label>
-									<input style="" value="" type="text" name="email" id="email">
-							</div><br></br>
-						</div>
-						
-						<div id="kontaktTelefon" class="clear formdiv">
-							<div class="layout">
-								<label for="telefon">Telefon:</label>
-									<input style="" value="" type="text" name="telefon" id="telefon">
-							</div><br></br>
-						</div> <!-- end kontaktTelefon -->
-						
-							<br class="clear">
-							<label for="message">Nachricht:*</label>
-							<textarea style="height:187px;resize:none;" name="message" id="message"></textarea>
-							
-							<div style="margin-top:10px">
-								<script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfRwMwSAAAAAN-2W8iJMCXSM0iTTDjzNVJ-oRb_"></script>
+            <h1>Kontakt</h1>
+            <p>Kritik, Wünsche oder Anregungen? Schreiben Sie uns über unser Kontaktformular:</p>
+        </div>
 
-								<noscript>
-									<iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfRwMwSAAAAAN-2W8iJMCXSM0iTTDjzNVJ-oRb_" height="300" width="500" frameborder="0"></iframe><br/>
-									<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-									<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
-								</noscript>							
-							</div>
-							
-							<input style="color:#666666 !important;" type="submit" name="submit" id="sendkontakt" value="Absenden">
-							<br class="clear">
-							<p style="margin-top:20px;">Die mit * gekennzeichneten Felder m&uuml;ssen ausgef&uuml;llt werden.</p>
-							
-				</form>
-			</div>
-		</div>
+        <div>
+
+            <div class="panel panel-default kontaktformular" id="formPreview">
+
+                <div class="panel-heading">
+                    <h3>Kontaktformular</h3>
+                </div>
+                <div class="panel-body">
+                    <form action="#" method="post" class="clear">
+
+
+
+                        <div id="formName" class="clear">
+                            <div id="formtAnrede" class="clear formdiv">
+                                <div class="layout">
+                                    <label for="anrede">Anrede:</label>
+                                    <select name="anrede" id="anrede">
+                                        <option value="Herr">Herr</option>
+                                        <option value="Frau">Frau</option>
+                                        <option value="Dipl. Ing.">Dipl. Ing.</option>
+                                        <option value="Prof.">Prof.</option>
+                                        <option value="Prof. Dr.">Prof. Dr.</option>
+                                        <option value="Herr Dr.">Herr Dr.</option>
+                                        <option value="Frau Dr.">Frau Dr.</option>
+                                    </select>
+                                </div>
+                                <br></br>
+                            </div>
+                            <div class="clear formdiv">
+                                <div class="layout">
+                                    <label for="vorname">Vorname:*</label>
+                                    <input class="form-control " value="" type="text" name="vorname" id="vorname">
+                                </div>
+                                <br></br>
+                                <div class="layout">
+                                    <label for="nachname">Nachname:*</label>
+                                    <input class="form-control " value="" type="text" name="nachname" id="nachname">
+                                </div>
+                                <br></br>
+                            </div>
+                        </div>
+                        <!-- end kontaktName -->
+
+                        <div id="kontaktEmail" class="clear formdiv">
+                            <div class="layout">
+                                <label for="email">Email:*</label>
+                                <input class="form-control " value="" type="text" name="email" id="email">
+                            </div>
+                            <br></br>
+                        </div>
+
+                        <div id="kontaktTelefon" class="clear formdiv">
+                            <div class="layout">
+                                <label for="telefon">Telefon:</label>
+                                <input class="form-control " value="" type="text" name="telefon" id="telefon">
+                            </div>
+                            <br></br>
+                        </div>
+                        <!-- end kontaktTelefon -->
+
+                        <br class="clear">
+                        <label for="message">Nachricht:*</label>
+                        <textarea class="form-control" style="height:187px;resize:none;" name="message" id="message"></textarea>
+
+                        <div style="margin-top:10px">
+                            <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfRwMwSAAAAAN-2W8iJMCXSM0iTTDjzNVJ-oRb_"></script>
+
+                            <noscript>
+                                <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfRwMwSAAAAAN-2W8iJMCXSM0iTTDjzNVJ-oRb_" height="300" width="500" frameborder="0"></iframe>
+                                <br/>
+                                <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+                                <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+                            </noscript>
+                        </div>
+
+                        <button class="btn btn-primary" style="margin-top:10px;" type="submit" name="submit" id="sendkontakt">Absenden</button>
+                        <br class="clear">
+                        <p style="margin-top:20px;">Die mit * gekennzeichneten Felder m&uuml;ssen ausgef&uuml;llt werden.</p>
+
+                    </form>
+                </div>
+
+
+            </div>
+
+            <div class="panel panel-default anschrift">
+
+                <div class="panel-heading">
+                    <h3>Anschrift</h3>
+                </div>
+                <div class="panel-body">
+
+                    <h4>Ristorante l'Imaginario</h4> 
+                    <p>Bruchstr. 6
+                        <br>45883 Gelsenkirchen</p>
+                    <p>Telefon: (0211) - 963411
+                        <br>E-Mail: <a href='mailto:info@Imaginario.de'>info@Imaginario.de</a>
+                        </br>
+                    </p>
+
+                </div>
+            </div>
+
+
+
+        </div>
 
     </div>
 
