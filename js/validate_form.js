@@ -6,7 +6,6 @@ function validateForm() {
     var date = $('#date').val();
     var time = $('#time').val();
     var tableNo = $('#table_no').val();
-    var firstName = $('#first_name').val();
     var lastName = $('#last_name').val();
     var email = $('#email').val();
 	var captcha = $('#g-recaptcha-response').val();
@@ -84,13 +83,6 @@ function validateForm() {
         if ((tableNoInt != tableNo) || (tableNoInt < 1) || (tableNoInt > 22)) {
             errorMessage += "Die Tischnummer muss eine Zahl zwischen 1 und 22 sein.<br />";
         }
-    }
-
-    // Vorname validieren
-
-    // Vorname darf nicht leer sein.
-    if (firstName === "") {
-        errorMessage += "Bitte geben Sie Ihren Vornamen an.<br />";
     }
 
     // Nachname validieren
