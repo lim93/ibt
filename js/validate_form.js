@@ -9,12 +9,8 @@ function validateForm() {
     var firstName = $('#first_name').val();
     var lastName = $('#last_name').val();
     var email = $('#email').val();
-
-    // var hours = parseInt(time.substr(0, 2));
-    // var minutes = parseInt(time.substr(3, 2));
-
-    // alert("Stunden: " + hours + "\n" + "Minuten: " + minutes);
-
+	var captcha = $('#g-recaptcha-response').val();
+	
     // Datumsvalidierung
 
     // Datumsfeld darf nicht leer sein
@@ -120,11 +116,16 @@ function validateForm() {
         }
     }
 
+	// Captcha-Validierung
+	if (captcha === "") {
+		errorMessage += "Bitte bestätigen Sie, dass Sie kein Roboter sind.";
+	}
+	
     if (errorMessage.length > 0) {
         isValid = false;
         showErrorMsg(errorMessage);
     }
-
+	
     return isValid;
 
 }

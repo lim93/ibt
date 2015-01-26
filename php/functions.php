@@ -27,23 +27,15 @@ function verifyCaptcha() {
 	require_once "recaptcha_config.php";
 
 	$resp = null;
-	// $error = null;
 	
 	$reCaptcha = new ReCaptcha(SECRET_KEY);
-	// echo "Response-String: " . $_POST["g-recaptcha-response"] . "<br />";
 
 	$resp = $reCaptcha->verifyResponse(
 		$_SERVER["REMOTE_ADDR"],
 		$_POST["g-recaptcha-response"]
 	);
 
-	if ($resp->errorCodes != null) {
-		echo $resp->errorCodes;
-	}
-	
-	return true;
-	// zu ersetzen durch: 
-	// return $resp->success;
+	return $resp->success;
 }
 
 function isAvailable($dbLink, $date, $tableNo) {

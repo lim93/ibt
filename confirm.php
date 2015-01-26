@@ -56,12 +56,13 @@
 <?php
 	include "php/functions.php";
 	
-	// Boolsche Variable, um dynamische Ausgabe zu realieren.
-	$booked = false;
+	// Variable, um dynamische Ausgabe zu realieren.
+	$booked = null;
 	
-	// Überprüfung der Captcha-Eingabe; liefert im Moment immer true zurück.
-    //if (verifyCaptcha()) {
+	// Überprüfung der Captcha-Eingabe
+    if (verifyCaptcha()) {
 	
+		// Überprüfung der POST-Parameter
 		if (checkPostParams()) {
 		
 			$dbLink = getDbLink();
@@ -80,6 +81,7 @@
 			
 			$bookingNo = 42;
 			
+			// Überprüfung der Verfügbarkeit des Tisches
 			if (isAvailable($dbLink, $mysqlDate, $tableNo)) {
 			
 				$sql="INSERT INTO bookings(booking_no, date, time, table_no, persons, first_name, last_name, email, phone) 
@@ -91,7 +93,7 @@
 				} else {
 				
 					// Datensatz wurde in DB eingefügt.
-					$booked = true;
+					$booked = "booked";
 					
 					// Hier könnte man noch eine Mail versenden. Der Code dafür ist recht simpel, 
 					// allerdings braucht man dafür natürlich einen Mailserver.
@@ -103,11 +105,15 @@
 					
 					mysqli_close($dbLink);
 				}
+			} else {
+				$booked = "not_available";
 			}
 		} else {
-			echo "Eingabefehler";
+			$booked = "post_error";
 		}
-	// }
+	} else {
+		$booked = "captcha_error";
+	}
 ?> 
 
 <body>
@@ -139,18 +145,24 @@
 			
 			<?php
 	
-				if ($booked) {
+				if ($booked == "booked") {
 					// Datensatz wurde in die DB geschrieben -> Erfolgsmeldung an Benutzer
 					echo "<h3>Ihre Reservierung wurde erfasst. Vielen Dank.</h3>";
 					echo "<p>Reservierungsnummer: $bookingNo<br />"
 					     . "Reservierungsdatum: $date, $time<br />"
 					     . "Tisch-Nr: $tableNo</p>";
-				} else {
-					// Reservierung war nicht möglich -> entsprechende Meldung an Benutzer
+				} elseif ($booked == "not_available") {
+					// Reservierung nicht möglich: Tisch nicht verfügbar
 					echo "<h3>Der von Ihnen gew&auml;hlte Tisch Nr. $tableNo ist am $date leider nicht mehr verf&uuml;gbar.</h3>";
+				} elseif ($booked == "post_error") {
+					// Reservierung nicht möglich: POST-Parameter falsch
+					echo "<h3>Reservierung fehlgeschlagen: &Uuml;bermittelte Formularinhalte korrupt.</h3>";
+				} elseif ($booked == "captcha_error") {
+					// Reservierung nicht möglich: Captcha-Fehler
+					echo "<h3>Reservierung fehlgeschlagen: Bitte best&auml;tigen Sie, dass Sie kein Roboter sind.</h3>";
 				}
 	
-			?>
+			?> 
 			
 			<p><a href="reservierung.php" />Zur&uuml;ck zum Reservierungsformular</p>
             

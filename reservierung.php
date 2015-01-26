@@ -216,7 +216,7 @@
 
                     <hr>
 
-                    <p>Vorname: *<span><input class="form-control reducedPadding" type="text" name="first_name" id="first_name" placeholder="Vorname"></input></span>
+                    <p>Vorname:<span><input class="form-control reducedPadding" type="text" name="first_name" id="first_name" placeholder="Vorname"></input></span>
                     </p>
                     <p>Name: *<span><input  class="form-control reducedPadding" type="text" name="last_name" id="last_name" placeholder="Name"></input></span>
                     </p>
@@ -227,7 +227,7 @@
 
                     <hr>
 
-                    <!-- <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div><br/> -->
+                    <div class="g-recaptcha" data-sitekey="<?php echo SITE_KEY;?>"></div><br/>
 
                     <div id="errorDiv"></div>
 
