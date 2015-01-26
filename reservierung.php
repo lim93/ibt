@@ -124,9 +124,9 @@
                 </li>
                 <li role="presentation" class="active"><a href="reservierung.php">Reservierung</a>
                 </li>
-                <li role="presentation"><a href="#">Kontakt</a>
+                <li role="presentation"><a href="kontakt.php">Kontakt</a>
                 </li>
-                <li role="presentation"><a href="#">Impressum</a>
+                <li role="presentation"><a href="impressum.php">Impressum</a>
                 </li>
             </ul>
         </div>
