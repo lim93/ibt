@@ -70,9 +70,9 @@ function isAvailable() {
 			var mysqlDate = "" + dateParts[2] + dateParts[1] + dateParts[0];
 			
 			// XML HTTP Request erzeugen und an is_available.php schicken.
-			if (window.XMLHttpRequest) {
+			if (window.XMLHttpRequest) { // Chrome, Firefox, Safari, Opera, IE10+
 				xmlhttp = new XMLHttpRequest();
-			} else {
+			} else { // IE9-
 				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 			}
 			xmlhttp.onreadystatechange = function() {

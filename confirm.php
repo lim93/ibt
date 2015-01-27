@@ -79,7 +79,7 @@
 			$dateParts = explode('.', $date);
 			$mysqlDate = sprintf("%04d%02d%02d", $dateParts[2], $dateParts[1], $dateParts[0]);
 			
-			$bookingNo = 42;
+			$bookingNo = uniqid();
 			
 			// Überprüfung der Verfügbarkeit des Tisches
 			if (isAvailable($dbLink, $mysqlDate, $tableNo)) {
@@ -130,9 +130,9 @@
                 </li>
                 <li role="presentation" class="active"><a href="reservierung.php">Reservierung</a>
                 </li>
-                <li role="presentation"><a href="#">Kontakt</a>
+                <li role="presentation"><a href="kontakt.php">Kontakt</a>
                 </li>
-                <li role="presentation"><a href="#">Impressum</a>
+                <li role="presentation"><a href="impressum.php">Impressum</a>
                 </li>
             </ul>
         </div>
@@ -148,9 +148,9 @@
 				if ($booked == "booked") {
 					// Datensatz wurde in die DB geschrieben -> Erfolgsmeldung an Benutzer
 					echo "<h3>Ihre Reservierung wurde erfasst. Vielen Dank.</h3>";
-					echo "<p>Reservierungsnummer: $bookingNo<br />"
-					     . "Reservierungsdatum: $date, $time<br />"
-					     . "Tisch-Nr: $tableNo</p>";
+					echo "<h4>Reservierungsnummer: $bookingNo</h4>";
+					echo "<p>Bitte notieren Sie sich diese Reservierungsnummer für eventuelle Rückfragen.</p>";
+					echo "<p>Sie haben den Tisch $tableNo für den $date um $time Uhr reserviert.</p>";
 				} elseif ($booked == "not_available") {
 					// Reservierung nicht möglich: Tisch nicht verfügbar
 					echo "<h3>Der von Ihnen gew&auml;hlte Tisch Nr. $tableNo ist am $date leider nicht mehr verf&uuml;gbar.</h3>";
