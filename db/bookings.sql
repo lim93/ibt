@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 26. Jan 2015 um 18:15
+-- Erstellungszeit: 27. Jan 2015 um 14:51
 -- Server Version: 5.6.21
 -- PHP-Version: 5.6.3
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `bookings` (
 `id` int(11) NOT NULL,
-  `booking_no` varchar(5) COLLATE latin1_general_ci NOT NULL,
+  `booking_no` varchar(13) COLLATE latin1_general_ci NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
   `table_no` tinyint(4) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   `last_name` varchar(60) COLLATE latin1_general_ci NOT NULL,
   `email` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `phone` varchar(20) COLLATE latin1_general_ci DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Daten für Tabelle `bookings`
@@ -64,7 +64,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT für Tabelle `bookings`
 --
 ALTER TABLE `bookings`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=72;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
