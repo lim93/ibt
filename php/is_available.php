@@ -1,11 +1,4 @@
 ﻿<?php
-	// $date = $_GET['date'];
-	// $tableNo = $_GET['table'];
-	// echo "is_available.php erreicht.";
-	// echo "$date";
-	// echo "$tableNo";
-	
-	
 	// Datenbankverbindung aufbauen
 	require_once "db_config.php"; 
 
@@ -23,9 +16,6 @@
 	$date = $_GET['date'];
 	$tableNo = $_GET['table'];
 	
-	// $dateParts = explode('.', $date);
-	// $mysqlDate = sprintf("%04d%02d%02d", $dateParts[2], $dateParts[1], $dateParts[0]);
-	
 	$isAvailable = true;
 	$sql = "SELECT id FROM bookings WHERE date = $date AND table_no = $tableNo";
 	
@@ -36,14 +26,11 @@
 			$isAvailable = false;
 			echo '<div class="alert alert-danger" role="alert">Tisch ' . $tableNo . ' ist am gew&uuml;nschten Datum leider nicht mehr verf&uuml;gbar.</div>';
 		} else {
-			echo '<div class="alert alert-info" role="alert">Tisch ' . $tableNo . ' ist verf&uuml;gbar.'; 
+			echo '<div class="alert alert-info" role="alert">Tisch ' . $tableNo . ' ist am gew&uuml;nschten Datum verf&uuml;gbar.'; 
 		}
 		
 		$result->close();
 	}
 	
 	$dbLink->close();
-	
-	// echo "Das sollte jetzt im infoDiv stehen, wenn der Tisch verf&uuml;gbar ist.";
-
-?>
+?> 

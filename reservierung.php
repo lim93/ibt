@@ -209,7 +209,7 @@
                     <p>Uhrzeit: *<span><input  class="form-control reducedPadding" type="text" name="time" id="time" placeholder="hh:mm"></input></span>
                     </p>
                     <p>Tischnummer: *<span><input  class="form-control reducedPadding" type="text" name="table_no" id="table_no" placeholder="" onblur="isAvailable();"></input></span><!--onblur="isAvailable();">-->
-                        <div id="infoDiv">Hier erscheint ne Meldung</div>
+                        <div id="infoDiv"></div>
                     </p>
                     <p>Anzahl Personen: <span><input  class="form-control reducedPadding" type="text" name="persons" id="persons" placeholder=""></input></span>
                     </p>
