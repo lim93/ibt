@@ -47,10 +47,10 @@ function showErrorMsg(message) {
 }
 
 // Prüfen, ob Tisch am gewählten Datum verfügbar ist
-function isAvailable() {
+function isAvailable(date, tableNo) {
 	
-	var date = $('#date').val();
-	var tableNo = $('#table_no').val();
+	// var date = $('#date').val();
+	// var tableNo = $('#table_no').val();
 	var errorMessage = "";
 	
 	// Info-Nachricht löschen, falls eins der beiden Felder leer ist.
