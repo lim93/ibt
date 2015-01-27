@@ -149,8 +149,8 @@
 					// Datensatz wurde in die DB geschrieben -> Erfolgsmeldung an Benutzer
 					echo "<h3>Ihre Reservierung wurde erfasst. Vielen Dank.</h3>";
 					echo "<h4>Reservierungsnummer: $bookingNo</h4>";
-					echo "<p>Bitte notieren Sie sich diese Reservierungsnummer für eventuelle Rückfragen.</p>";
-					echo "<p>Sie haben den Tisch $tableNo für den $date um $time Uhr reserviert.</p>";
+					echo "<p>Bitte notieren Sie sich diese Reservierungsnummer f&uuml;r eventuelle R&uuml;ckfragen.</p>";
+					echo "<p>Sie haben den Tisch $tableNo f&uuml;r den $date um $time Uhr reserviert.</p>";
 				} elseif ($booked == "not_available") {
 					// Reservierung nicht möglich: Tisch nicht verfügbar
 					echo "<h3>Der von Ihnen gew&auml;hlte Tisch Nr. $tableNo ist am $date leider nicht mehr verf&uuml;gbar.</h3>";

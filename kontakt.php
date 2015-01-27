@@ -129,7 +129,7 @@
 
         <div class="intro">
             <h1>Kontakt</h1>
-            <p>Kritik, Wünsche oder Anregungen? Schreiben Sie uns über unser Kontaktformular:</p>
+            <p>Kritik, W&uuml;nsche oder Anregungen? Schreiben Sie uns &uuml;ber unser Kontaktformular:</p>
         </div>
 
         <div>

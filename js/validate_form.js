@@ -221,7 +221,7 @@ function checkCaptcha(captcha) {
 	
 	// Captcha darf nicht leer sein.
 	if (captcha === "") {
-		errorMessage += "Bitte bestätigen Sie, dass Sie kein Roboter sind.";
+		errorMessage += "Bitte best&auml;tigen Sie, dass Sie kein Roboter sind.";
 	}
 
 	return errorMessage;
