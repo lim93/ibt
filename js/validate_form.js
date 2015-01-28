@@ -49,9 +49,8 @@ function showErrorMsg(message) {
 // Prüfen, ob Tisch am gewählten Datum verfügbar ist
 function isAvailable(date, tableNo) {
 	
-	// var date = $('#date').val();
-	// var tableNo = $('#table_no').val();
-	var errorMessage = "";
+	var dateError = "";
+	var tableError  = "";
 	
 	// Info-Nachricht löschen, falls eins der beiden Felder leer ist.
 	if (date == "" || tableNo == "") {
@@ -60,16 +59,18 @@ function isAvailable(date, tableNo) {
 	} else {
 		
 		// Datum und Tischnummer auf korrekte Eingabe überprüfen.
-		errorMessage += checkDate(date);
-		errorMessage += checkTableNo(tableNo);
+		dateError = checkDate(date);
+		tableError = checkTableNo(tableNo);
 		
-		if (errorMessage === "") {
+		if (dateError === "" && tableError === "") {
 			
 			// Datum in MySQL-verständlichen String umwandeln.
 			var dateParts = date.split(".");
 			var mysqlDate = "" + dateParts[2] + dateParts[1] + dateParts[0];
 			
 			// XML HTTP Request erzeugen und an is_available.php schicken.
+			var getRequest = "php/is_available.php?date=" + mysqlDate + "&table=" + tableNo;
+			
 			if (window.XMLHttpRequest) { // Chrome, Firefox, Safari, Opera, IE10+
 				xmlhttp = new XMLHttpRequest();
 			} else { // IE9-
@@ -80,8 +81,12 @@ function isAvailable(date, tableNo) {
 					$("#infoDiv").html(xmlhttp.responseText);
 				}
 			}
-			xmlhttp.open("GET","php/is_available.php?date="+mysqlDate+"&table="+tableNo,true);
+			xmlhttp.open("GET", getRequest, true);
 			xmlhttp.send();
+			
+		} else {
+			$("#infoDiv").html("<div class=\"alert alert-danger\" role=\"alert\">Datum oder Tischnummer ung&uuml;ltig.</div>");
+			return;
 		}
 	}
 }

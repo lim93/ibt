@@ -19,14 +19,14 @@
     <!-- Sticky Header -->
     <script src="js/sticky.js"></script>
 	
-	<!-- Calender -->
+	<!-- Calendar -->
 	<script type="text/javascript" src="js/bootstrap-datepicker.de.js"></script> 
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script> 
 
     <!-- Bootstrap CSS-->
     <link href="css/bootstrap.css" rel="stylesheet">
 	
-	<!-- Calender CSS -->
+	<!-- Calendar CSS -->
 	<link href="css/datepicker.css"  rel="stylesheet" type="text/css"/> 
 
     <!-- Validierung / Plausibilitätsprüfung -->
@@ -36,13 +36,26 @@
     <script src="https://www.google.com/recaptcha/api.js?hl=<?php echo LANG;?>"></script>
     <!-- async defer -->
 
-    <!-- JQuery-Funktionen -->
+    <!-- ImageMap Skalierung -->
     <script src="js/jquery.rwdImageMaps.min.js"></script>
+	
+	<!-- jQuery $(document).ready() Funktion -->
     <script>
         $(document).ready(function (e) {
             // ImageMap skalierbar
 			$('img[usemap]').rwdImageMaps();
 
+			// Datepicker für Datumsfeld initialisieren
+			$('#date').datepicker({
+				format : "dd.mm.yyyy",
+				weekStart : 1,
+				startDate : "-0d",
+				endDate : "+1y",
+				language : "de",
+				autoclose : true,
+				todayHighlight : true
+			});
+			
 			// Tischnummer aus ImageMap in Formularfeld übertragen und
 			// Verfügbarkeit des Tisches prüfen
             $('area').on('click', function () {
@@ -58,8 +71,8 @@
 				return false;
             });
 			
-			// Verfügbarkeit bei onblur von Datum prüfen
-			$('#date').on('blur', function() {
+			// Verfügbarkeit bei onchange von Datum prüfen
+			$('#date').on('change', function() {
 				var date = $('#date').val();
 				var tableNo = $('#table_no').val();
 				if (tableNo != "") {
@@ -68,22 +81,14 @@
 				return false;
 			});
 			
-			// Verfügbarkeit bei onblur von Tischnummer prüfen
-			$('#table_no').on('blur', function() {
+			// Verfügbarkeit bei onchange von Tischnummer prüfen
+			$('#table_no').on('change', function() {
 				var date = $('#date').val();
 				var tableNo = $('#table_no').val();
 				if (date != "") {
 					isAvailable(date, tableNo);
 				}
 				return false;
-			});
-
-			$('#date').datepicker({
-				format : "dd.mm.yyyy",
-				weekStart : 1,
-				language : "de",
-				startDate : "-0d",
-				endDate : "+200d"
 			});
 
         });
@@ -181,7 +186,7 @@
 
         <div class="intro">
             <h1>Reservierung</h1>
-            <p>Auf dieser Seite k&ouml;nnen Sie Ihren Wunschtisch reservieren. 
+            <p>Auf dieser Seite k&ouml;nnen Sie Ihren Lieblingsplatz reservieren. 
 			Klicken Sie einfach im Saalplan auf den gew&uuml;nschten Tisch.
 			</p>
         </div>
