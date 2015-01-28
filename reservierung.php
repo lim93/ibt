@@ -18,9 +18,16 @@
 
     <!-- Sticky Header -->
     <script src="js/sticky.js"></script>
+	
+	<!-- Calender -->
+	<script type="text/javascript" src="js/bootstrap-datepicker.de.js"></script> 
+	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script> 
 
     <!-- Bootstrap CSS-->
     <link href="css/bootstrap.css" rel="stylesheet">
+	
+	<!-- Calender CSS -->
+	<link href="css/datepicker.css"  rel="stylesheet" type="text/css"/> 
 
     <!-- Validierung / Plausibilitätsprüfung -->
     <script type="text/javascript" src="js/validate_form.js"></script>
@@ -70,6 +77,15 @@
 				}
 				return false;
 			});
+
+			$('#date').datepicker({
+				format : "dd.mm.yyyy",
+				weekStart : 1,
+				language : "de",
+				startDate : "-0d",
+				endDate : "+200d"
+			});
+
         });
     </script>
 
