@@ -19,8 +19,7 @@
     <!-- Sticky Header -->
     <script src="js/sticky.js"></script>
 	
-	<!-- Calendar -->
-	<script type="text/javascript" src="js/bootstrap-datepicker.de.js"></script> 
+	<!-- Calendar --> 
 	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script> 
 
     <!-- Bootstrap CSS-->

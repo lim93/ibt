@@ -82,10 +82,17 @@ class ReCaptcha
      *
      * @return array response
      */
-    private function _submitHTTPGet($path, $data)
+private function _submitHTTPGet($path, $data)
     {
+  $arrContextOptions=array(
+   "ssl"=>array(
+    "verify_peer"=>false,
+    "verify_peer_name"=>false,
+   ),
+  ); 
+  
         $req = $this->_encodeQS($data);
-        $response = file_get_contents($path . $req);
+        $response = file_get_contents($path . $req, false, stream_context_create($arrContextOptions));
         return $response;
     }
     /**
