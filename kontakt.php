@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 
+<html>
+
+<?php require_once "php/recaptcha_config.php" ?>
+
 <head>
     <meta charset="utf-8">
 
@@ -17,8 +21,10 @@
 
     <!-- Bootstrap CSS-->
     <link href="css/bootstrap.css" rel="stylesheet">
-
-
+	
+    <!-- reCAPTCHA API -->
+    <script src="https://www.google.com/recaptcha/api.js?hl=<?php echo LANG;?>"></script>
+	
 
     <!-- Styles ---------------------->
     <style type="text/css">
@@ -63,7 +69,8 @@
             display: inline-block;
             margin: 20px;
         }
-        .captchaError {
+        /*
+		.captchaError {
             color: red;
             font-weight: bold;
         }
@@ -73,7 +80,8 @@
         }
         #recaptcha_response_field {
             height: auto !important;
-        }
+        } 
+		*/
         #formPreview input,
         #formPreview select {
             display: block;
@@ -98,6 +106,9 @@
         .intro {
             margin: 0px 20px 0px 0px;
         }
+		.floatRight {
+			float: right;
+		}
     </style>
 
 </head>
@@ -140,9 +151,8 @@
                     <h3>Kontaktformular</h3>
                 </div>
                 <div class="panel-body">
+				
                     <form action="#" method="post" class="clear">
-
-
 
                         <div id="formName" class="clear">
                             <div id="formtAnrede" class="clear formdiv">
@@ -163,22 +173,21 @@
                             <div class="clear formdiv">
                                 <div class="layout">
                                     <label for="vorname">Vorname:*</label>
-                                    <input class="form-control " value="" type="text" name="vorname" id="vorname">
+                                    <input class="form-control" type="text" name="vorname" id="vorname">
                                 </div>
                                 <br></br>
                                 <div class="layout">
                                     <label for="nachname">Nachname:*</label>
-                                    <input class="form-control " value="" type="text" name="nachname" id="nachname">
+                                    <input class="form-control" type="text" name="nachname" id="nachname">
                                 </div>
                                 <br></br>
                             </div>
                         </div>
-                        <!-- end kontaktName -->
 
                         <div id="kontaktEmail" class="clear formdiv">
                             <div class="layout">
                                 <label for="email">Email:*</label>
-                                <input class="form-control " value="" type="text" name="email" id="email">
+                                <input class="form-control" type="text" name="email" id="email">
                             </div>
                             <br></br>
                         </div>
@@ -186,34 +195,23 @@
                         <div id="kontaktTelefon" class="clear formdiv">
                             <div class="layout">
                                 <label for="telefon">Telefon:</label>
-                                <input class="form-control " value="" type="text" name="telefon" id="telefon">
+                                <input class="form-control" type="text" name="telefon" id="telefon">
                             </div>
                             <br></br>
                         </div>
-                        <!-- end kontaktTelefon -->
 
                         <br class="clear">
                         <label for="message">Nachricht:*</label>
                         <textarea class="form-control" style="height:187px;resize:none;" name="message" id="message"></textarea>
 
-                        <div style="margin-top:10px">
-                            <script type="text/javascript" src="http://www.google.com/recaptcha/api/challenge?k=6LfRwMwSAAAAAN-2W8iJMCXSM0iTTDjzNVJ-oRb_"></script>
+                        <div class="g-recaptcha" style="margin-top:20px" data-sitekey="<?php echo SITE_KEY;?>"></div>
 
-                            <noscript>
-                                <iframe src="http://www.google.com/recaptcha/api/noscript?k=6LfRwMwSAAAAAN-2W8iJMCXSM0iTTDjzNVJ-oRb_" height="300" width="500" frameborder="0"></iframe>
-                                <br/>
-                                <textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-                                <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
-                            </noscript>
-                        </div>
-
-                        <button class="btn btn-primary" style="margin-top:10px;" type="submit" name="submit" id="sendkontakt">Absenden</button>
-                        <br class="clear">
-                        <p style="margin-top:20px;">Die mit * gekennzeichneten Felder m&uuml;ssen ausgef&uuml;llt werden.</p>
+                        <button class="btn btn-primary floatRight" style="margin-top:20px;" type="submit" name="submit" id="sendkontakt">Absenden</button>
+                        <br class="clear"/>
+                        <p style="margin-top:30px;">Die mit * gekennzeichneten Felder m&uuml;ssen ausgef&uuml;llt werden.</p>
 
                     </form>
                 </div>
-
 
             </div>
 
@@ -225,17 +223,15 @@
                 <div class="panel-body">
 
                     <h4>Ristorante l'Imaginario</h4> 
-                    <p>Bruchstr. 6
-                        <br>45883 Gelsenkirchen</p>
-                    <p>Telefon: (0211) - 963411
-                        <br>E-Mail: <a href='mailto:info@Imaginario.de'>info@Imaginario.de</a>
-                        </br>
+                    <p>Bruchstr. 6<br/>
+						45883 Gelsenkirchen
+					</p>
+                    <p>Telefon: (0211) 963411<br/>
+						E-Mail: <a href='mailto:info@imaginario.de'>info@imaginario.de</a>
                     </p>
 
                 </div>
             </div>
-
-
 
         </div>
 
